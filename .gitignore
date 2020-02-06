@@ -1,5 +1,7 @@
 ### App ###
 
+.kotlintest
+
 # The contents below are generated. Place custom entries above.
 # Created by https://www.gitignore.io/api/vim,java,macos,gradle,kotlin,jetbrains+all
 # Edit at https://www.gitignore.io/?templates=vim,java,macos,gradle,kotlin,jetbrains+all
