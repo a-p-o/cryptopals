@@ -19,29 +19,6 @@ fun base64ToHex(base64: String): Hex = base64ToByteArray(base64).toHex()
 fun Hex.toBase64(): String = toByteArray().toBase64()
 
 /**
- * Hamming Distance for plaintext.
- */
-fun String.hammingDistance(other: String): Int {
-    require(this.length == other.length) { "Strings must be of equal length." }
-
-    // 0 1 0 1
-    //  x o r
-    // 1 1 1 0
-    // -------
-    // 1 0 1 1
-    // then
-    // 1 + 0 + 1 + 1 = 3
-
-    return this.zip(other)
-        // xor first second
-        .map { (first, second) -> first xor second }
-        // Count number of set bits (https://stackoverflow.com/a/5268949)
-        .map { Integer.bitCount(it.toInt()) }
-        // Sum number of set bits
-        .sum()
-}
-
-/**
  * Hamming Distance for [ByteArray]. Prefer this over a function specifically for [Hex] or base 64.
  */
 fun ByteArray.hammingDistance(other: ByteArray): Int {
@@ -50,11 +27,16 @@ fun ByteArray.hammingDistance(other: ByteArray): Int {
     return this.zip(other)
         // xor first second
         .map { (first, second) -> first xor second }
-        // Count number of set bits (https://stackoverflow.com/a/5268949)
+        // Count number of set bits (https://stackoverflow.com/a/5268949/3133286)
         .map { Integer.bitCount(it.toInt()) }
         // Sum number of set bits
         .sum()
 }
+
+/**
+ * Hamming Distance for plaintext.
+ */
+fun String.hammingDistance(other: String): Int = throw UnsupportedOperationException("Use a ByteArray instead!")
 
 /**
  * Similar to [Byte.xor].
