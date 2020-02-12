@@ -1,6 +1,8 @@
 package set1
 
+import Hex
 import toBase64
+import toByteArray
 
 /**
  * https://cryptopals.com/sets/1/challenges/1
@@ -18,7 +20,7 @@ import toBase64
  * # Cryptopals Rule
  * > Always operate on raw bytes, never on encoded strings. Only use hex and base64 for pretty-printing.
  */
-fun hexToBase64(hex: String): String {
+fun hexToBase64(hex: Hex): String {
     // Convert hex representation to number
     val byteArray = hex.toByteArray()
 
