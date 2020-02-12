@@ -67,10 +67,10 @@ fun breakRepeatingKeyXor(file: String): String {
     val hex = base64ToHex(base64)
 
     val keySizesToHammingDistance = findKeySizesWithSmallestHammingDistance(hex)
-    
+
     // Print the five best/smallest keysize to hamming distance pairs as sanity check
-    val bestKeySizes = keySizesToHammingDistance.take(3).map { it.first }.toList()
-//    println("Best key sizes: $bestKeySizes")
+    val bestKeySizes = keySizesToHammingDistance.take(3).map { it.first }.toSet()
+    println("Best key sizes: $bestKeySizes")
 
     // 5. Break ciphertext into blocks of keysize length
     // 6. Transpose the blocks/chunks
